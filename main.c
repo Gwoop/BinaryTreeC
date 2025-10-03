@@ -12,7 +12,6 @@ typedef struct BinTree {
     Node* Central;
 } BinTree;
 
-// Function prototypes
 Node* NewNode(int value);
 bool Insert(BinTree* t, int value);
 Node* Search(BinTree* t, int value);
@@ -57,7 +56,7 @@ int main() {
                     while(getchar() != '\n');
                     break;
                 }
-                // Search node
+                
                 Node* found = Search(&tree, bufer);
                 if (found != NULL) {
                     printf("Found node with value: %d\n", found->Values);
@@ -141,7 +140,7 @@ bool Delete(BinTree* t, int value) {
     Node* current = t->Central;
     bool is_minimal = false;
 
-    // Find the node to delete
+    //
     while (current != NULL && current->Values != value) {
         parent = current;
         if (value < current->Values) {
@@ -157,10 +156,9 @@ bool Delete(BinTree* t, int value) {
         return false; // Node not found
     }
 
-    // Case 1: Node with only one child or no child
+    
     if (current->Left == NULL) {
         if (parent == NULL) {
-            // Deleting root node
             t->Central = current->Right;
         } else {
             if (is_minimal) {
@@ -182,7 +180,6 @@ bool Delete(BinTree* t, int value) {
         }
         free(current);
     } else {
-        // Case 2: Node with two children
         Node* minimalnodeparent = current;
         Node* minimalnode = current->Right;
 
@@ -191,9 +188,7 @@ bool Delete(BinTree* t, int value) {
             minimalnode = minimalnode->Left;
         }
 
-        current->Values = minimalnode->Values;
-
-        // Remove minimalnode
+        current->Values = minimalnode->
         if (minimalnodeparent == current) {
             minimalnodeparent->Right = minimalnode->Right;
         } else {
